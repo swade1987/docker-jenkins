@@ -10,9 +10,7 @@ ENV JENKINS_UC https://updates.jenkins.io
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
 RUN apt-get update && apt-get install -y git curl && \
-    rm -rf /var/lib/apt/lists/* && \
-    mkdir -p /usr/share/jenkins/ref/init.groovy.d && \
-    curl -fsSL https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-static -o /bin/tini && chmod +x /bin/tini && \
+    mkdir -p /usr/share/jenkins && \
     curl -fsSL https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war -o /usr/share/jenkins/jenkins.war && \
     mkdir -p ${JENKINS_HOME}/plugins
 
